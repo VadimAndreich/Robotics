@@ -1,0 +1,23 @@
+
+   PLATFORM INFORMATION
+system           : Linux
+platform info    : Linux-6.11.5-arch1-1-x86_64-with-glibc2.40
+release          : 6.11.5-arch1-1
+processor        : 
+
+   QOS COMPATIBILITY LIST
+compatibility status    : No publisher/subscriber pairs found
+
+   RMW MIDDLEWARE
+middleware name    : rmw_fastrtps_cpp
+
+   ROS 2 INFORMATION
+distribution name      : humble
+distribution type      : ros2
+distribution status    : active
+release platforms      : {'rhel': ['8'], 'ubuntu': ['jammy']}
+
+   TOPIC LIST
+topic               : none
+publisher count     : 0
+subscriber count    : 0
