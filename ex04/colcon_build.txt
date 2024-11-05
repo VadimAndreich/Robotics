@@ -1,4 +1,0 @@
-Starting >>> vadimandreich
-Finished <<< vadimandreich [0.25s]
-
-Summary: 1 package finished [0.62s]
