@@ -12,15 +12,15 @@ Files:
 - 'direction of rotation' - int, Direction in which carrot1 is rotating(1 for clockwise, -1 for counter-clockwise.)
 
 ### How to launch:
-'''
+```
 ros2 launch learning_tf2_py rotating_carrot.launch.py target_frame:=carrot1 radius:=2.0 direction_of_rotation:=1
-'''
+```
 
 ### RViz config
 #### Location:
 learning_tf2_py/config/carrot.rviz
 
 #### How to open in rviz(from ros2_ws):
-'''
+```
 ros2 run rviz2 rviz2 -d src/module04/ex02/learning_tf2_py/config/carrot.rviz
-'''
+```
