@@ -1,58 +1,52 @@
 ## Ex01
-### How to get tf2 frames:
-```
-ros2 run tf2_tools view_frames
-```
-### How to get transformations:
-```
-ros2 run tf2_ros tf2_echo [source_frame] [target_frame]
-```
-Where source_frame is the frame, which coordinates will be translated to target_frame coordinates
-
-Transforamtion matrix is a homogeneous matrix of size 4x4, where matrix of rows 1-3 and columns 1-3 is the rotational part, 4th column with rows 1-3 is a translational part(biases by X,Y,Z), and the 4th row is a piece of shit
-
----
-## Ex02
-Package: learning_tf2_py
+Packages:
+- robot_description
 
 Files:
-- learning_tf2_py/learning_tf2_py/rotating_carrot.py
-- learning_tf2_py/launch/rotating_carrot.launch.py
-- learning_tf2_py/package.xml
-- learning_tf2_py/setup.py
+- ros2_ws/my_robot/robot_description/urdf/robot.urdf.xacro
+- ros2_ws/my_robot/robot_description/urdf/robot.urdf (**Converted from xacro**)
+- ros2_ws/src/module05/ex01/my_robot/robot_description/launch/robot_display.launch.py
 
-### Parameters of launch:
-- 'target_frame' - string, id of target frame that will be followed by turtle2
-- 'radius' - float, distance between turtle1 and carrot1
-- 'direction of rotation' - int, Direction in which carrot1 is rotating(1 for clockwise, -1 for counter-clockwise)
+### How to convert .xacro to .urdf:
+```
+ros2 run xacro xacro path/to/your_robot.xacro -o path/to/your_robot.urdf
+```
+
+From ~/my_robot/robot_description/urdf:
+```
+ros2 run xacro xacro robot.urdf.xacro -o robot.urdf
+```
 
 ### How to launch:
 ```
-ros2 launch learning_tf2_py rotating_carrot.launch.py target_frame:=carrot1 radius:=2.0 direction_of_rotation:=1
+ros2 launch robot_description robot_display.launch.py
 ```
 
-### RViz config
-#### Location:
-learning_tf2_py/config/carrot.rviz
+### Same but without launch file:
+```
+ros2 run robot_state_publisher robot_state_publisher <urdf_file>
+```
 
-#### How to open in rviz(from ros2_ws):
 ```
-ros2 run rviz2 rviz2 -d src/module04/ex02/learning_tf2_py/config/carrot.rviz
+ros2 run joint_state_publisher_gui joint_state_publisher_gui
 ```
+
+```
+ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map bottom_link
+```
+
+```
+ros2 run rviz2 rviz2 -d <rviz_config_file>
+```
+
+### What's happening:
+1. robot_state_publisher publishes links' states to the /robot_description topic
+
+2. joint_state_publisher_gui gives ability to control non-fixed joints' states with UI and publishes it to the /joint_states topic
+
+3. static_transform_publisher gives tranformation from bottom_link to map frame for RViz correct work
+
+4. rviz2 opens given config. In this case it's configured to read /robot_description topic
+
 ---
-## Ex03
-Package: learning_tf2_py
 
-Files:
-- learning_tf2_py/learning_tf2_py/time_travel_turtle.py
-- learning_tf2_py/launch/time_travel_turtle.launch.py
-- learning_tf2_py/package.xml
-- learning_tf2_py/setup.py
-
-### Parameters of launch:
-- delay - float, Time in seconds to ~travel back in time~
-
-### How to launch:
-```
-ros2 launch learning_tf2_py time_travel_turtle.launch.py delay:=3.0
-```
