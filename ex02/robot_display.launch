@@ -8,16 +8,16 @@ from launch_ros.parameter_descriptions import ParameterValue
 def generate_launch_description():
     pkg_share = FindPackageShare(package='robot_description').find('robot_description')
     rviz_config_path = os.path.join(pkg_share, 'rviz/robot.rviz')
-    # urdf_file_path = os.path.join(pkg_share, 'urdf/robot.urdf')
-    xacro_file_path = os.path.join(pkg_share, 'urdf/robot.urdf.xacro')
+    urdf_file_path = os.path.join(pkg_share, 'urdf/robot.urdf')
+    # xacro_file_path = os.path.join(pkg_share, 'urdf/robot.urdf.xacro')
 
     return LaunchDescription([
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
             name='robot_state_publisher',
-            # arguments=[urdf_file_path],
-            parameters=[{'robot_description': ParameterValue(Command(['xacro ', xacro_file_path]), value_type=str)}]
+            arguments=[urdf_file_path],
+            # parameters=[{'robot_description': ParameterValue(Command(['xacro ', xacro_file_path]), value_type=str)}]
         ),
         Node(
             package='joint_state_publisher_gui',

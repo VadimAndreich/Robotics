@@ -7,16 +7,6 @@ Files:
 - ros2_ws/my_robot/robot_description/urdf/robot.urdf (**Converted from xacro**)
 - ros2_ws/src/module05/ex01/my_robot/robot_description/launch/robot_display.launch.py
 
-### How to convert .xacro to .urdf:
-```
-ros2 run xacro xacro path/to/your_robot.xacro -o path/to/your_robot.urdf
-```
-
-From ~/my_robot/robot_description/urdf:
-```
-ros2 run xacro xacro robot.urdf.xacro -o robot.urdf
-```
-
 ### How to launch:
 ```
 ros2 launch robot_description robot_display.launch.py
@@ -47,6 +37,19 @@ ros2 run rviz2 rviz2 -d <rviz_config_file>
 3. static_transform_publisher gives tranformation from bottom_link to map frame for RViz correct work
 
 4. rviz2 opens given config. In this case it's configured to read /robot_description topic
+
+---
+## Ex02
+
+### How to convert .xacro to .urdf:
+```
+ros2 run xacro xacro path/to/your_robot.xacro -o path/to/your_robot.urdf
+```
+
+From ~/my_robot/robot_description/urdf:
+```
+ros2 run xacro xacro robot.urdf.xacro -o robot.urdf
+```
 
 ---
 
