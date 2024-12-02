@@ -45,11 +45,53 @@ ros2 run rviz2 rviz2 -d <rviz_config_file>
 ```
 ros2 run xacro xacro path/to/your_robot.xacro -o path/to/your_robot.urdf
 ```
+Or:
+```
+xacro path/to/your_robot.xacro > path/to/your_robot.urdf
+```
 
 From ~/my_robot/robot_description/urdf:
 ```
-ros2 run xacro xacro robot.urdf.xacro -o robot.urdf
+xacro robot.urdf.xacro > robot.urdf
+```
+
+Also, how to convert usdf to sdf(gazebo does it automatically):
+```
+gz sdf -p robot.urdf > robot.sdf
 ```
 
 ---
+## Ex03
+How to launch:
+```
+ros2 launch robot_description robot_gazebo.launch.py
+```
+
+How to control:
+```
+ros2 topic pub /robot/cmd_vel geometry_msgs/Twist '{linear: {x: 1.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}'
+```
+
+Or:
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/robot/cmd_vel
+```
+
+Else:
+```
+ros2 run rqt_robot_steering rqt_robot_steering
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+
 
