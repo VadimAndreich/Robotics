@@ -83,11 +83,28 @@ ros2 run rqt_robot_steering rqt_robot_steering
 ```
 
 ---
+## Ex04
+Packages:
+- move_around
 
+Files:
+- launch/circle_movement.launch.py
+- move_around/circle_movement.py
 
+### How to launch:
+```
+ros2 launch move_around circle_movement.launch.py
+```
 
+And from another terminal:
+```
+ros2 run move_around circle_movement
+```
 
+### What's happening:
+circle_movement.py spins a node, that publishes to /robot/cmd_vel with linear speed x = 0.5 and angular speed z = 0.5 making robot spin
 
+---
 
 
 
