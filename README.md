@@ -98,14 +98,33 @@ ros2 launch move_around circle_movement.launch.py
 
 And from another terminal:
 ```
-ros2 run move_around circle_movement
+ros2 run move_around movements_node
 ```
 
 ### What's happening:
 circle_movement.py spins a node, that publishes to /robot/cmd_vel with linear speed x = 0.5 and angular speed z = 0.5 making robot spin
 
 ---
+## Ex05
+Packages:
+- pattern_movement
 
+Files:
+- launch/pattern_movement.launch.py
+- pattern_movement/pattern_movement.py
+
+### How to launch:
+```
+ros2 launch pattern_movement pattern_movement.launch.py
+```
+
+And from another terminal:
+```
+ros2 run pattern_movement movements_node
+```
+
+### What's happening:
+pattern_movement.py spins a node, that publishes to /robot/cmd_vel with linear speed x = 1.0 and, periodically, angular speed z = 0.5 making robot spin for ~90 degrees, making a rounded square
 
 
 
