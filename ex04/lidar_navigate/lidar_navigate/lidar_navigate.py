@@ -21,11 +21,14 @@ class LidarNavigate(Node):
         vel_msg = Twist()
         laser = self.scan.ranges
         vel_msg.linear.x = 0.
-        if (len(laser)!=0):
-            if (laser[179]<0.41):
+
+        if (len(laser) != 0):
+            # self.get_logger().info(f"{laser[89]}")
+            if (laser[89] < 1):
                 vel_msg.linear.x = 0.
             else:
                 vel_msg.linear.x = 0.3
+        
         vel_msg.angular.z = 0.0
         self.velocity_publisher.publish(vel_msg)
 
