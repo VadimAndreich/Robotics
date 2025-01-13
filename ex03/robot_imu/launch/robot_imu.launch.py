@@ -14,7 +14,7 @@ from launch.actions import TimerAction
 
 
 def generate_launch_description():
-    pkg_desk_share = FindPackageShare(package='depth_navigate').find('depth_navigate')
+    pkg_desk_share = FindPackageShare(package='robot_imu').find('robot_imu')
     pkg_gz_share = FindPackageShare(package='ros_gz_sim').find('ros_gz_sim')
 
     xacro_file_path = os.path.join(pkg_desk_share, 'urdf/robot.urdf.xacro')
